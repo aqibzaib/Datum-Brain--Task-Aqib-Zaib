@@ -1,8 +1,19 @@
-# React + Vite
+\*\*Developed using React and Material UI for enhanced interactivity and component structure
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Assessment Criteria:**
 
-Currently, two official plugins are available:
+- Implemented UI as per the provided Figma Design
+- Attention to detail in design and functionality
+- Responsive layout development
+- JavaScript interactivity handling
+- Web accessibility considerations
+- Followed development best practices
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Additional Details:**
+
+- This project is solely for assessment purposes and will not be used for client deliveries.
+- To run the project locally, ensure you have Node.js installed and run `npm install` followed by `npm run dev`
+
+**Note:**
+
+This project was developed in accordance with the provided assessment requirements and design. It is not intended for production use and is a demonstration of skills in UI development, interaction handling, and web accessibility.
