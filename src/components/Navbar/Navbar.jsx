@@ -55,33 +55,6 @@ export default function Navbar() {
 
   const classes = useStyles();
   return (
-    // <Box sx={{ flexGrow: 1 }}>
-    //   <Grid container spacing={3}>
-    //     <Grid item sm={4} xs={6}>
-    //       <Grid container alignItems="center">
-    //         <Grid item xs={4}>
-    //           <img src={Logo} alt="React logo" style={{ maxWidth: "100%" }} />
-    //         </Grid>
-    //         <Grid item xs={8}>
-    //           <Typography variant="h6">MegaMart</Typography>
-    //         </Grid>
-    //       </Grid>
-    //     </Grid>
-    //     <Grid item sm={4} xs={6}>
-    //       <Grid container alignItems="center" justifyContent={"center"}>
-    //         <Grid item xs={4}>
-    //           <Menu />
-    //         </Grid>
-    //         <Grid item xs={8}>
-    //           <SearchBar />
-    //         </Grid>
-    //       </Grid>
-    //     </Grid>
-    //     <Grid item xs={4}>
-    //       <Item>xs</Item>
-    //     </Grid>
-    //   </Grid>
-    // </Box>
     <Toolbar>
       <Box sx={{ flexGrow: 1 }}>
         <Grid

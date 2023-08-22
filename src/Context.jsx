@@ -1,17 +1,19 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
-const Context = createContext();
 
-//fetching Porducts
+const Context = createContext();
 
 function ContextProvider(props) {
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+
   const api = axios.create({
     baseURL: "https://fakestoreapi.com",
   });
 
   useEffect(() => {
     fetchProducts();
+    initializeCartFromLocalStorage();
   }, []);
 
   const fetchProducts = async () => {
@@ -23,11 +25,13 @@ function ContextProvider(props) {
     }
   };
 
-  //adding item to vart
-  const [cart, setCart] = useState([]);
-  // ... other code
+  const initializeCartFromLocalStorage = () => {
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  };
 
-  // Adding item to cart
   const addToCart = (id) => {
     const itemToAdd = products.find((product) => product.id === id);
     if (itemToAdd) {
@@ -35,7 +39,10 @@ function ContextProvider(props) {
     }
   };
 
-  // Storing cart data in localStorage
+  const removeFromCart = (id) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+  };
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
@@ -45,6 +52,7 @@ function ContextProvider(props) {
       value={{
         products: products,
         addToCart: addToCart,
+        removeFromCart: removeFromCart, // Include removeFromCart
         cart: cart,
       }}
     >
