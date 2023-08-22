@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import ButtonBase from "@mui/material/ButtonBase";
 import { Rating } from "@mui/material";
 import AddToCartButton from "./AddToCartButton";
-
+import { Context } from "../../Context";
 const Img = styled("img")({
   margin: "auto",
   display: "block",
@@ -16,6 +16,7 @@ const Img = styled("img")({
 });
 
 export default function ComplexGrid({ product }) {
+  // const { cart } = React.useContext(Context);
   ///Showing Button on Hover
 
   const [isHovered, setIsHovered] = React.useState(false);
@@ -26,12 +27,12 @@ export default function ComplexGrid({ product }) {
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-  }
+  };
 
   return (
     <Paper
       sx={{
-        marginLeft: 1,
+        marginLeft: 2,
         p: 2,
         width: "227px",
         maxHeight: 284,
@@ -93,7 +94,7 @@ export default function ComplexGrid({ product }) {
                     transform: "translate(-50%, -50%)",
                   }}
                 >
-                  <AddToCartButton />
+                  <AddToCartButton product={product} />
                 </div>
               )}
             </div>
@@ -112,7 +113,6 @@ export default function ComplexGrid({ product }) {
               </Typography>
               {/* <Typography variant="body2" color="text.secondary"></Typography> */}
               <Rating name="read-only" value={product.rating.rate} readOnly />
-              {console.log(product.rating.rate)}
             </Grid>
           </Grid>
         </Grid>

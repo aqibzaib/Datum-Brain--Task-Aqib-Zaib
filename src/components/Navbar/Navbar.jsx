@@ -1,4 +1,4 @@
-// import * as React from "react";
+import React from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -10,6 +10,7 @@ import SearchBar from "./searchBar";
 import cartLogo from "../../assets/cart.svg";
 
 import { makeStyles } from "@mui/styles";
+import { Context } from "../../Context";
 
 const useStyles = makeStyles({
   customText: {
@@ -50,6 +51,8 @@ const ItemContainer = styled(Box)(({ theme }) => ({
 }));
 
 export default function Navbar() {
+  const { cart } = React.useContext(Context);
+
   const classes = useStyles();
   return (
     // <Box sx={{ flexGrow: 1 }}>
@@ -130,7 +133,9 @@ export default function Navbar() {
               >
                 Cart
               </Typography>
-              <div className={classes.customBox}>1</div>
+              {cart.length > 0 && (
+                <div className={classes.customBox}>{cart.length}</div>
+              )}
             </Box>
           </Grid>
         </Grid>

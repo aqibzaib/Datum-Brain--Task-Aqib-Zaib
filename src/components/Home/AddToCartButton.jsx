@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 
 import { styled } from "@mui/material/styles";
-import { purple } from "@mui/material/colors";
+import { Context } from "../../Context";
 
 const CustomButton = styled(Button)({
   boxShadow: "none",
@@ -53,10 +53,16 @@ const CustomButton = styled(Button)({
   },
 });
 
-export default function AddToCartButton(
-  {
-    //  onClick
-  }
-) {
-  return <CustomButton>Add to Cart</CustomButton>;
+export default function AddToCartButton({ product }) {
+  const { addToCart, cart } = React.useContext(Context);
+
+  const handleAddToCart = () => {
+    addToCart(product.id);
+  };
+
+  // Calculate cart count
+  const cartCount = cart.length;
+  console.log(cartCount);
+
+  return <CustomButton onClick={handleAddToCart}>Add to Cart</CustomButton>;
 }
