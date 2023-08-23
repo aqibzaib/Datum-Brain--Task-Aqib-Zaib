@@ -34,14 +34,14 @@ const useStyles = makeStyles({
   },
 });
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-  // height:theme.spacing
-}));
+// const Item = styled(Paper)(({ theme }) => ({
+//   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+//   ...theme.typography.body2,
+//   padding: theme.spacing(1),
+//   textAlign: "center",
+//   color: theme.palette.text.secondary,
+//   // height:theme.spacing
+// }));
 
 const ItemContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -76,9 +76,9 @@ export default function Navbar() {
             </ItemContainer>
           </Grid>
           <Grid item sm={4} xs={12}>
-            <ItemContainer>
+            <ItemContainer sx={{ backgroundColor: "#F3F9FB" }}>
               <Menu />
-              <SearchBar />
+              <SearchBar sx={{ border: "3px solid blue" }} />
             </ItemContainer>
           </Grid>
           <Grid item sm={4} xs={6}>

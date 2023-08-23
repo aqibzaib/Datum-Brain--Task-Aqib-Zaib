@@ -5,7 +5,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import ButtonBase from "@mui/material/ButtonBase";
 import { Rating } from "@mui/material";
-import AddToCartButton from "./AddToCartButton";
+import AddToCartButton from "./CartButton";
 import { Context } from "../../Context";
 const Img = styled("img")({
   margin: "auto",

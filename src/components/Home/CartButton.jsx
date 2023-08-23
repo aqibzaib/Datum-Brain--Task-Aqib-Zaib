@@ -6,6 +6,7 @@ import { Context } from "../../Context";
 import cartLogo from "../../assets/cart.svg";
 import { Typography } from "@mui/material";
 import { display } from "@mui/system";
+import { Translate } from "@mui/icons-material";
 
 const CustomButton = styled(Button)(({ theme, isAdded, width }) => ({
   boxShadow: "none",
@@ -53,24 +54,23 @@ export default function AddToCartButton({ product }) {
     <div
       style={{
         display: "flex",
+        flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
         gap: "10px",
       }}
     >
-      <div>
-        <img src={cartLogo} alt="Cart logo" style={{ maxWidth: "100%" }} />
-      </div>
-      <div>
-        <Typography
-          variant="caption"
-          display="block"
-          gutterBottom
-          sx={{ fontSize: 12 }}
-        >
-          Remove from Cart
-        </Typography>
-      </div>
+      <img src={cartLogo} alt="Cart logo" style={{ maxWidth: "100%" }} />
+
+      <Typography
+        variant="caption"
+        display="block"
+        gutterBottom
+        align="center"
+        sx={{ fontSize: 12, margin: "0" }}
+      >
+        Remove from Cart
+      </Typography>
     </div>
   ) : (
     "Add to Cart"

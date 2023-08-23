@@ -9,8 +9,23 @@ import MenuList from "@mui/material/MenuList";
 import Stack from "@mui/material/Stack";
 import { Divider, ListItemIcon } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles((theme) => ({
+  menuStyle: {
+    "&.MuiButtonBase-root, &.MuiMenuItem-root": {
+      // padding: 0,
+      padding: "0 10px",
+      lineHeight: 1,
+
+      // margin: 0,
+      // color: "blue",
+    },
+  },
+}));
 
 export default function DropDown() {
+  const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -86,15 +101,30 @@ export default function DropDown() {
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>Mobile</MenuItem>
+                    <MenuItem
+                      onClick={handleClose}
+                      className={classes.menuStyle}
+                    >
+                      Mobile
+                    </MenuItem>
                     <Divider />
-                    <MenuItem onClick={handleClose}>Games</MenuItem>
-                    <Divider />
-                    <MenuItem onClick={handleClose}>Toys</MenuItem>
-                    <Divider />
+                    <MenuItem
+                      onClick={handleClose}
+                      className={classes.menuStyle}
+                    >
+                      Games
+                    </MenuItem>
+                    <Divider sx={{ marginTop: "3px", marginBottom: "3px" }} />
+                    <MenuItem
+                      onClick={handleClose}
+                      className={classes.menuStyle}
+                    >
+                      Toys
+                    </MenuItem>
+                    {/* <Divider />
                     <MenuItem onClick={handleClose}>Deals</MenuItem>
                     <Divider />
-                    <MenuItem onClick={handleClose}>Books</MenuItem>
+                    <MenuItem onClick={handleClose}>Books</MenuItem> */}
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
