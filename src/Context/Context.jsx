@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 
 const Context = createContext();
@@ -28,7 +28,8 @@ function ContextProvider(props) {
   };
 
   const initializeCartFromLocalStorage = () => {
-    const savedCart = localStorage.getItem("cart");
+    const savedCart = window.localStorage.getItem("cart");
+
     if (savedCart) {
       setCart(JSON.parse(savedCart));
     }
@@ -46,13 +47,14 @@ function ContextProvider(props) {
   };
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
+    window.localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
   const filterProducts = () => {
     return products.filter((product) => {
       const matchesCategory =
-        selectedCategory === "All" || product.category === selectedCategory;
+        selectedCategory === "All" ||
+        product.category.split(" ")[0] === selectedCategory;
 
       const matchesSearchQuery = product.title
         .toLowerCase()
@@ -61,6 +63,14 @@ function ContextProvider(props) {
       return matchesCategory && matchesSearchQuery;
     });
   };
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
+    initializeCartFromLocalStorage();
+  }, []);
 
   return (
     <Context.Provider

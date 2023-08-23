@@ -5,8 +5,8 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import ButtonBase from "@mui/material/ButtonBase";
 import { Rating } from "@mui/material";
-import AddToCartButton from "./CartButton";
-import { Context } from "../../Context";
+import AddToCartButton from "./components/CartButton";
+import { Context } from "../../Context/Context";
 const Img = styled("img")({
   margin: "auto",
   display: "block",
@@ -36,33 +36,16 @@ export default function ComplexGrid({ product }) {
         p: 2,
         width: "227px",
         maxHeight: 284,
-        // flexGrow: 1,
+        flexGrow: { xs: 1, md: "none" },
         flexWrap: "wrap",
         backgroundColor: "#F5F5F5",
-        //for production
         border: "1px solid #EDEDED",
-        // for development
-        // border: "1px solid grey",
+
         borderRadius: "16px",
       }}
     >
       <Grid container spacing={2} direction={"column"}>
         <Grid item container justifyContent={"center"}>
-          {/* <ButtonBase
-            sx={{
-              width: 150,
-              height: 188,
-              // border: "3px solid black",
-              display: "flex",
-              justifyContent: "center !important",
-            }}
-          >
-            <div >
-              <Img alt="complex" src={product.image} />
-              <AddToCartButton />
-            </div>
-          </ButtonBase> */}
-
           <ButtonBase
             disableRipple
             sx={{
@@ -108,7 +91,16 @@ export default function ComplexGrid({ product }) {
                   product.title.split(" ")[0] // Extract the first word from the title
                 }
               </Typography>
-              <Typography variant="body2" gutterBottom>
+              <Typography
+                variant="body2"
+                gutterBottom
+                sx={{
+                  fontFamily: "Inter",
+                  fontsize: "16px",
+                  fontWeight: "700",
+                  lineHeight: "18px",
+                }}
+              >
                 ${product.price}
               </Typography>
               {/* <Typography variant="body2" color="text.secondary"></Typography> */}

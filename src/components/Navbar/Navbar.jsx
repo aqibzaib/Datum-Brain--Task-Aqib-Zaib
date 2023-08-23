@@ -1,16 +1,16 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
+
 import Grid from "@mui/material/Grid";
 import Logo from "../../assets/logo.svg";
-import { IconButton, Toolbar, Typography } from "@mui/material";
-import Menu from "./DropDown";
-import SearchBar from "./searchBar";
+import { Toolbar, Typography } from "@mui/material";
+import Menu from "./components/DropDown";
+import SearchBar from "./components/searchBar";
 import cartLogo from "../../assets/cart.svg";
 
 import { makeStyles } from "@mui/styles";
-import { Context } from "../../Context";
+import { Context } from "../../Context/Context";
 
 const useStyles = makeStyles({
   customText: {
@@ -20,6 +20,7 @@ const useStyles = makeStyles({
     lineHeight: "18px !important",
     color: "#666666 !important",
   },
+
   customBox: {
     width: "9px",
     height: "9px",
@@ -33,15 +34,6 @@ const useStyles = makeStyles({
     color: "white",
   },
 });
-
-// const Item = styled(Paper)(({ theme }) => ({
-//   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-//   ...theme.typography.body2,
-//   padding: theme.spacing(1),
-//   textAlign: "center",
-//   color: theme.palette.text.secondary,
-//   // height:theme.spacing
-// }));
 
 const ItemContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -61,9 +53,9 @@ export default function Navbar() {
           container
           spacing={1}
           alignItems={"center"}
-          justifyContent={"space-around"}
+          justifyContent={{ sm: "center", xs: "flex-start" }}
         >
-          <Grid item sm={4} xs={6}>
+          <Grid item sm={4} xs={0}>
             <ItemContainer>
               <img src={Logo} alt="Logo" style={{ marginRight: "8px" }} />
               <Typography
@@ -75,16 +67,17 @@ export default function Navbar() {
               </Typography>
             </ItemContainer>
           </Grid>
+
           <Grid item sm={4} xs={12}>
             <ItemContainer sx={{ backgroundColor: "#F3F9FB" }}>
               <Menu />
               <SearchBar sx={{ border: "3px solid blue" }} />
             </ItemContainer>
           </Grid>
-          <Grid item sm={4} xs={6}>
+          <Grid item sm={4}>
             <Box
               sx={{
-                display: "flex",
+                display: { xs: "none", sm: "flex" },
                 alignItems: "center",
                 justifyContent: "end",
                 // border: "3px dotted brown",
@@ -92,20 +85,13 @@ export default function Navbar() {
                 height: "100%",
               }}
             >
-              {/* <IconButton> */}
               <img
                 src={cartLogo}
                 alt="Cart logo"
                 style={{ maxWidth: "100%" }}
               />
-              {/* </IconButton> */}
-              <Typography
-                // variant="h6"
-                // style={{ margin: "0" }}
-                className={classes.customText}
-              >
-                Cart
-              </Typography>
+
+              <Typography className={classes.customText}>Cart</Typography>
               {cart.length > 0 && (
                 <div className={classes.customBox}>{cart.length}</div>
               )}

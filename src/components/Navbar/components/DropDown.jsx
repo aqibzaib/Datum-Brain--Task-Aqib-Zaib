@@ -10,7 +10,7 @@ import Stack from "@mui/material/Stack";
 import { Divider, ListItemIcon } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { makeStyles } from "@mui/styles";
-import { Context } from "../../Context";
+import { Context } from "../../../Context/Context";
 
 const useStyles = makeStyles((theme) => ({
   menuStyle: {
@@ -116,22 +116,22 @@ export default function DropDown() {
                     <Divider sx={{ marginTop: "3px", marginBottom: "3px" }} />
                     <MenuItem
                       onClick={() => {
-                        setSelectedCategory("Mobile");
+                        setSelectedCategory("men's");
                         handleClose();
                       }}
                       className={classes.menuStyle}
                     >
-                      Mobile
+                      Mens
                     </MenuItem>
                     <Divider sx={{ marginTop: "3px", marginBottom: "3px" }} />
                     <MenuItem
                       onClick={() => {
-                        setSelectedCategory("Games");
+                        setSelectedCategory("women's");
                         handleClose();
                       }}
                       className={classes.menuStyle}
                     >
-                      Games
+                      Women
                     </MenuItem>
                   </MenuList>
                 </ClickAwayListener>

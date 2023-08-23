@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import { Context } from "../../Context";
+import { Context } from "../../../Context/Context";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative", // Added relative positioning
@@ -60,7 +60,6 @@ export default function SearchBar() {
           inputProps={{ "aria-label": "search" }}
           value={searchQuery}
           onChange={handleSearchChange}
-          // onChange={(e) => setSearchQuery(e.target.value)}
         />
         <SearchIconWrapper>
           <SearchIcon />

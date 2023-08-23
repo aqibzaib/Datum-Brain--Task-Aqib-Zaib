@@ -1,9 +1,9 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
-import { Context } from "../../Context";
+import { Context } from "../../../Context/Context";
 
-import cartLogo from "../../assets/cart.svg";
+import cartLogo from "../../../assets/cart.svg";
 import { Typography } from "@mui/material";
 
 const CustomButton = styled(Button)(({ theme, isAdded, width }) => ({
