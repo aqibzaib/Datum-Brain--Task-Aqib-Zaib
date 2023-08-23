@@ -10,6 +10,7 @@ import Stack from "@mui/material/Stack";
 import { Divider, ListItemIcon } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { makeStyles } from "@mui/styles";
+import { Context } from "../../Context";
 
 const useStyles = makeStyles((theme) => ({
   menuStyle: {
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function DropDown() {
+  const { selectedCategory, setSelectedCategory } = React.useContext(Context);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -71,7 +73,7 @@ export default function DropDown() {
           aria-haspopup="true"
           onClick={handleToggle}
         >
-          All
+          {selectedCategory}
           <ListItemIcon>
             <KeyboardArrowDownIcon fontSize="small" />
           </ListItemIcon>
@@ -100,31 +102,37 @@ export default function DropDown() {
                     id="composition-menu"
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
+                    onChange={(e) => setSelectedCategory(e.target.value)}
                   >
                     <MenuItem
-                      onClick={handleClose}
+                      onClick={() => {
+                        setSelectedCategory("All");
+                        handleClose();
+                      }}
+                      className={classes.menuStyle}
+                    >
+                      All
+                    </MenuItem>
+                    <Divider sx={{ marginTop: "3px", marginBottom: "3px" }} />
+                    <MenuItem
+                      onClick={() => {
+                        setSelectedCategory("Mobile");
+                        handleClose();
+                      }}
                       className={classes.menuStyle}
                     >
                       Mobile
                     </MenuItem>
-                    <Divider />
+                    <Divider sx={{ marginTop: "3px", marginBottom: "3px" }} />
                     <MenuItem
-                      onClick={handleClose}
+                      onClick={() => {
+                        setSelectedCategory("Games");
+                        handleClose();
+                      }}
                       className={classes.menuStyle}
                     >
                       Games
                     </MenuItem>
-                    <Divider sx={{ marginTop: "3px", marginBottom: "3px" }} />
-                    <MenuItem
-                      onClick={handleClose}
-                      className={classes.menuStyle}
-                    >
-                      Toys
-                    </MenuItem>
-                    {/* <Divider />
-                    <MenuItem onClick={handleClose}>Deals</MenuItem>
-                    <Divider />
-                    <MenuItem onClick={handleClose}>Books</MenuItem> */}
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

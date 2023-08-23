@@ -5,8 +5,6 @@ import { Context } from "../../Context";
 
 import cartLogo from "../../assets/cart.svg";
 import { Typography } from "@mui/material";
-import { display } from "@mui/system";
-import { Translate } from "@mui/icons-material";
 
 const CustomButton = styled(Button)(({ theme, isAdded, width }) => ({
   boxShadow: "none",

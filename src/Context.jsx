@@ -6,6 +6,8 @@ const Context = createContext();
 function ContextProvider(props) {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const api = axios.create({
     baseURL: "https://fakestoreapi.com",
@@ -47,13 +49,30 @@ function ContextProvider(props) {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
+  const filterProducts = () => {
+    return products.filter((product) => {
+      const matchesCategory =
+        selectedCategory === "All" || product.category === selectedCategory;
+
+      const matchesSearchQuery = product.title
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
+
+      return matchesCategory && matchesSearchQuery;
+    });
+  };
+
   return (
     <Context.Provider
       value={{
-        products: products,
+        products: filterProducts(),
         addToCart: addToCart,
-        removeFromCart: removeFromCart, // Include removeFromCart
+        removeFromCart: removeFromCart,
         cart: cart,
+        selectedCategory: selectedCategory,
+        setSelectedCategory: setSelectedCategory,
+        searchQuery: searchQuery,
+        setSearchQuery: setSearchQuery,
       }}
     >
       {props.children}
