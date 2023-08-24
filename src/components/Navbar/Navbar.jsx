@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 
 import Grid from "@mui/material/Grid";
 import Logo from "../../assets/logo.svg";
-import { Toolbar, Typography } from "@mui/material";
+import { Hidden, Toolbar, Typography } from "@mui/material";
 import Menu from "./components/DropDown";
 import SearchBar from "./components/searchBar";
 import cartLogo from "../../assets/cart.svg";
@@ -53,9 +53,9 @@ export default function Navbar() {
           container
           spacing={1}
           alignItems={"center"}
-          justifyContent={{ sm: "center", xs: "flex-start" }}
+          justifyContent={"space-between"}
         >
-          <Grid item sm={4} xs={0}>
+          <Grid item sm={4} xs={6}>
             <ItemContainer>
               <img src={Logo} alt="Logo" style={{ marginRight: "8px" }} />
               <Typography
@@ -67,6 +67,34 @@ export default function Navbar() {
               </Typography>
             </ItemContainer>
           </Grid>
+
+          {/* Conditional Rendering Cart Button */}
+          <Hidden smUp>
+            <Grid item sm={6}>
+              <Box
+                sx={{
+                  //  display: { xs: "none", sm: "flex" },
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "end",
+                  // border: "3px dotted brown",
+                  gap: "1rem",
+                  height: "100%",
+                }}
+              >
+                <img
+                  src={cartLogo}
+                  alt="Cart logo"
+                  style={{ maxWidth: "100%" }}
+                />
+
+                <Typography className={classes.customText}>Cart</Typography>
+                {cart.length > 0 && (
+                  <div className={classes.customBox}>{cart.length}</div>
+                )}
+              </Box>
+            </Grid>
+          </Hidden>
 
           <Grid item sm={4} xs={12}>
             <ItemContainer sx={{ backgroundColor: "#F3F9FB" }}>
