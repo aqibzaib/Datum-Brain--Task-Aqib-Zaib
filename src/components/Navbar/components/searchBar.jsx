@@ -8,7 +8,7 @@ import { Context } from "../../../Context/Context";
 const Search = styled("div")(({ theme }) => ({
   position: "relative", // Added relative positioning
   borderRadius: theme.shape.borderRadius,
-  border: "2px solid black",
+
   backgroundColor: alpha(theme.palette.common.white, 0.15),
   "&:hover": {
     backgroundColor: alpha(theme.palette.common.white, 0.25),

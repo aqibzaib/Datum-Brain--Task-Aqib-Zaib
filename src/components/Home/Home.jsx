@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import ButtonBase from "@mui/material/ButtonBase";
-import { Rating } from "@mui/material";
+import { Hidden, Rating } from "@mui/material";
 import AddToCartButton from "./components/CartButton";
 import { Context } from "../../Context/Context";
 const Img = styled("img")({
@@ -12,7 +12,7 @@ const Img = styled("img")({
   display: "block",
   maxWidth: "100%",
   // maxHeight: "100%",
-  maxHeight: 200,
+  maxHeight: 160,
 });
 
 export default function ComplexGrid({ product }) {
@@ -68,43 +68,60 @@ export default function ComplexGrid({ product }) {
               }}
             >
               <Img alt="complex" src={product.image} />
-              {isHovered && (
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                  }}
-                >
-                  <AddToCartButton product={product} />
-                </div>
-              )}
+              <Hidden smDown>
+                {isHovered && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                    }}
+                  >
+                    <AddToCartButton product={product} />
+                  </div>
+                )}
+              </Hidden>
             </div>
           </ButtonBase>
         </Grid>
+
         <Grid item xs={12} sm container>
-          <Grid item xs container direction="column" spacing={2}>
-            <Grid item xs>
-              <Typography gutterBottom variant="subtitle1" component="div">
-                {
-                  product.title.split(" ")[0] // Extract the first word from the title
-                }
-              </Typography>
-              <Typography
-                variant="body2"
-                gutterBottom
-                sx={{
-                  fontFamily: "Inter",
-                  fontsize: "16px",
-                  fontWeight: "700",
-                  lineHeight: "18px",
-                }}
-              >
-                ${product.price}
-              </Typography>
-              {/* <Typography variant="body2" color="text.secondary"></Typography> */}
-              <Rating name="read-only" value={product.rating.rate} readOnly />
+          <Grid
+            item
+            xs
+            container
+            //  direction="column"
+            spacing={2}
+          >
+            <Grid
+              item
+              xs
+              container
+              flexDirection={{ xs: "column", sm: "row" }}
+              columnGap={{ xs: "35%", sm: 0 }}
+              margin={{ xs: "-4px", sm: 0 }}
+            >
+              <Grid item sm={12} xs={6}>
+                <Typography gutterBottom variant="subtitle1" component="div">
+                  {
+                    product.title.split(" ")[0] // Extract the first word from the title
+                  }
+                </Typography>
+              </Grid>
+              <Grid item sm={12} xs={6}>
+                <Typography variant="body2" gutterBottom>
+                  ${product.price}
+                </Typography>
+              </Grid>
+              <Grid item sm={12} xs={6}>
+                <Rating name="read-only" value={product.rating.rate} readOnly />
+              </Grid>
+              <Grid sm={12} xs={6} md={"none"}>
+                <Hidden smUp>
+                  <AddToCartButton product={product} />
+                </Hidden>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
